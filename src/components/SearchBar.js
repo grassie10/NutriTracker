@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { Dropdown, FormControl } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from "react";
+import { Dropdown, FormControl } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   <button
+    className="btn btn-outline-secondary"
     onClick={(e) => {
       e.preventDefault();
       onClick(e);
@@ -17,24 +18,25 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
 // forwardRef again here!
 // Dropdown needs access to the DOM of the Menu to measure it
 const CustomMenu = React.forwardRef(
-  ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
-    const [value, setValue] = useState('');
+  ({ children, className, "aria-labelledby": labeledBy }, ref) => {
+    const [value, setValue] = useState("");
 
     return (
       <div
+        style={{ marginTop: "15px", width: "300px" }}
         ref={ref}
-        style={style}
+        // style={style}
         className={className}
         aria-labelledby={labeledBy}
       >
         <FormControl
           autoFocus
-          className='mx-3 my-2 w-auto'
-          placeholder='Type to filter...'
+          className="mx-3 my-2 w-auto"
+          placeholder="Type to filter..."
           onChange={(e) => setValue(e.target.value)}
           value={value}
         />
-        <ul className='list-unstyled'>
+        <ul className="list-unstyled">
           {React.Children.toArray(children).filter(
             (child) =>
               !value ||
@@ -47,21 +49,33 @@ const CustomMenu = React.forwardRef(
 );
 
 const SearchBar = ({ data, foods, setFoods }) => {
-
-
   return (
-    <Dropdown>
-      <Dropdown.Toggle as={CustomToggle} id='dropdown-custom-components'>
-        Select Food Items
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu as={CustomMenu}>
-        {data.map((item, index) => (
-          <Dropdown.Item key={index} onClick={() => setFoods([...foods, item])}>
-            {item.name}
-          </Dropdown.Item>
-        ))}
-      </Dropdown.Menu>
+    <Dropdown style={{ position: "inherit" }}>
+      <div style={{ left: "0px", position: "absolute", padding: "30px" }}>
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+          Select Food Items
+        </Dropdown.Toggle>
+        <Dropdown.Menu as={CustomMenu}>
+          {data.map((item, index) => (
+            <Dropdown.Item
+              key={index}
+              onClick={() => setFoods([...foods, item])}
+            >
+              {item.name}
+            </Dropdown.Item>
+          ))}
+        </Dropdown.Menu>
+        <button
+          style={{ marginLeft: "10px" }}
+          type="button"
+          className="btn btn-outline-secondary"
+          onClick={() => {
+            setFoods([]);
+          }}
+        >
+          clear
+        </button>
+      </div>
     </Dropdown>
   );
 };

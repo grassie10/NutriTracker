@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import './App.css';
-import SearchBar from './components/SearchBar';
-import FoodList from './components/FoodList';
-import NutrientCount from './components/NutrientCount';
-import { useData } from './firebase';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import icon from './icon.png';
+import React, { useState } from "react";
+import "./App.css";
+import SearchBar from "./components/SearchBar";
+import FoodList from "./components/FoodList";
+import NutrientCount from "./components/NutrientCount";
+import { useData } from "./firebase";
+import "bootstrap/dist/css/bootstrap.min.css";
+import icon from "./icon.png";
 
 function App() {
-  const [data, loading, error] = useData('/');
+  const [data, loading, error] = useData("/");
   const [foods, setFoods] = useState([]);
 
   if (loading) return <h1>Loading...</h1>;
@@ -17,13 +17,29 @@ function App() {
   console.log(foods);
 
   return (
-    <div className='App'>
-      <img src={icon} />
-      <h1>NutriTracker</h1>
-      <SearchBar data={data} foods={foods} setFoods={setFoods} />
-      <button type="button" className="btn btn-outline-secondary" onClick = {()=> {setFoods([])}}> clear </button>
-      <FoodList foods={foods} />
-      <NutrientCount foods={foods}/>
+    <div className="App">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <img width="70px" height="70px" src={icon} alt="logo_image" />
+        <h1>NutriTracker</h1>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
+      >
+        <SearchBar data={data} foods={foods} setFoods={setFoods} />
+        <FoodList foods={foods} />
+        <NutrientCount foods={foods} />
+      </div>
     </div>
   );
 }
