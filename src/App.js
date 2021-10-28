@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import FoodList from './components/FoodList';
+import CalorieCount from './components/CalorieCount';
 import { useData } from './firebase';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <h1>NutriTracker</h1>
       <SearchBar data={data} foods={foods} setFoods={setFoods} />
       <FoodList foods={foods} />
+      <CalorieCount foods={foods}/>
     </div>
   );
 }
