@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
+import FoodList from './components/FoodList';
 import { useData } from './firebase';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <div className='App'>
       <h1>NutriTracker</h1>
       <SearchBar data={data} foods={foods} setFoods={setFoods} />
+      <FoodList foods={foods} />
     </div>
   );
 }
