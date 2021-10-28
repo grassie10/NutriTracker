@@ -10,6 +10,13 @@ const CalorieCount = ({foods}) => {
 <div>
 <p>Average Calories: 2250 cal </p>
 </div>
+<div>
+<p>Total Calories Consumed: {Math.round((calorieCount*1000))} cal</p>
+</div>
+<div>
+<p>Average Calories: 2250 cal </p>
+</div>
+
     </div>
     
     );
