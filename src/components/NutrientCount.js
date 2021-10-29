@@ -20,7 +20,7 @@ const NutrientCount = ({ foods }) => {
     <div
       style={{ textAlign: "left", padding: "30px", justifyContent: "flex-end" }}
     >
-      <div>
+      <div data-testid="calorieCount">
         <p>Total Calories Consumed: {Math.round(calorieCount * 1000)} cal</p>
       </div>
       <div>
