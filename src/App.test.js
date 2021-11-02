@@ -134,4 +134,23 @@ describe('Select Food Item', () => {
     const foodList = await screen.findByTestId('food-list');
     expect(foodList.textContent).toContain(dropdownList[0].textContent);
   })
+
+  test ('does not display any food item without selection', async () => {
+    render(<App />);
+    const searchDropdown = await screen.findByTestId('select');
+    fireEvent.click(searchDropdown);
+    const dropdownList = await screen.findAllByTestId('select-item')
+    const foodList = await screen.findByTestId('food-list');
+    expect(foodList.textContent).toBeFalsy();
+  })
+
+  test ('does not display unselected food item', async () => {
+    render(<App />);
+    const searchDropdown = await screen.findByTestId('select');
+    fireEvent.click(searchDropdown);
+    const dropdownList = await screen.findAllByTestId('select-item')
+    fireEvent.click(dropdownList[0]);
+    const foodList = await screen.findByTestId('food-list');
+    expect(foodList.textContent).not.toContain(dropdownList[1].textContent);
+  })
 })
