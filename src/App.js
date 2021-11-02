@@ -6,6 +6,7 @@ import NutrientCount from "./components/NutrientCount";
 import { useData } from "./firebase";
 import "bootstrap/dist/css/bootstrap.min.css";
 import icon from "./icon.png";
+import InputDetails from "./components/InputDetails";
 
 function App() {
   const [data, loading, error] = useData("/");
@@ -38,6 +39,7 @@ function App() {
       >
         <SearchBar data={data} foods={foods} setFoods={setFoods} />
         <FoodList foods={foods} />
+        <InputDetails />
         <NutrientCount foods={foods} />
       </div>
     </div>
