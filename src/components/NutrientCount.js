@@ -1,6 +1,6 @@
 import React from "react";
 
-const NutrientCount = ({ foods }) => {
+const NutrientCount = ({ foods,calories }) => {
   const calorieCount = foods.reduce(
     (totalCalories, currentFood) =>
       totalCalories + currentFood.calories / currentFood.serving,
@@ -24,7 +24,7 @@ const NutrientCount = ({ foods }) => {
         <p>Total Calories Consumed: {Math.round(calorieCount * 1000)} cal</p>
       </div>
       <div>
-        <p>Average Calories: 2250 cal </p>
+        <p>Average Calories: {calories} cal</p>
       </div>
       <div>
         <p>

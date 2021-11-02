@@ -11,11 +11,11 @@ import InputDetails from "./components/InputDetails";
 function App() {
   const [data, loading, error] = useData("/");
   const [foods, setFoods] = useState([]);
+  const [calories, setCalories] = useState(0);
 
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>Error :(</h1>;
 
-  console.log(foods);
 
   return (
     <div className="App">
@@ -39,8 +39,8 @@ function App() {
       >
         <SearchBar data={data} foods={foods} setFoods={setFoods} />
         <FoodList foods={foods} />
-        <InputDetails />
-        <NutrientCount foods={foods} />
+        <InputDetails setCalories={setCalories} />
+        <NutrientCount foods={foods} calories={calories}/>
       </div>
     </div>
   );

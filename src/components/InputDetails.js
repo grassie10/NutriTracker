@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import '../App.css';
 
-const InputDetails = () => {
+const InputDetails = ({setCalories}) => {
   const [height, setHeight] = useState(0);
   const [weight, setWeight] = useState(0);
   const [sex, setSex] = useState(0);
   const [age, setAge] = useState(0);
   const [activity, setActivity] = useState(0);
+
 
   const calculateCalories = () => {
     const activityMultipliers = {
@@ -22,8 +23,8 @@ const InputDetails = () => {
     } else {
       BMR = 655 + (4.3 * weight) + (4.7 * height) - (4.7 * age);
     }
-    const calorieCount = BMR * activityMultipliers[activity];
-    return calorieCount;
+    const calorieCount = Math.round(BMR * activityMultipliers[activity]);
+    setCalories(calorieCount);
   }
 
   return (
@@ -65,7 +66,7 @@ const InputDetails = () => {
             <option value='4'>Extra active (very hard exercise/sports, physical job or 2x training)</option>
           </select>
         </label>
-        <input type='submit' value='Submit' />
+        <input type='button' value='Submit' onClick = {calculateCalories} />
       </form>
     </div>
   );
