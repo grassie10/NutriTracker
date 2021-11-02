@@ -2,7 +2,7 @@ import React from "react";
 
 const FoodList = ({ foods }) => {
   return (
-    <div style={{ padding: "30px" }}>
+    <div style={{ padding: "30px" }} data-testid='food-list'>
       <ul>
         {foods.map((food, index) => (
           <li key={index}>{food.name}</li>
