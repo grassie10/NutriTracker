@@ -1,6 +1,6 @@
 import React from "react";
 
-const NutrientCount = ({ foods,calories }) => {
+const NutrientCount = ({ foods, calories, vitaminA, carbs }) => {
   const calorieCount = foods.reduce(
     (totalCalories, currentFood) =>
       totalCalories + currentFood.calories / currentFood.serving,
@@ -16,6 +16,13 @@ const NutrientCount = ({ foods,calories }) => {
       totalProtein + currentFood.proteins / currentFood.serving,
     0
   );
+
+  const carbCount = foods.reduce(
+    (totalCarbs, currentFood) =>
+      totalCarbs + currentFood.carbohydrates / currentFood.serving,
+    0
+  );
+
   return (
     <div
       style={{ textAlign: "left", padding: "30px", justifyContent: "flex-end" }}
@@ -32,13 +39,19 @@ const NutrientCount = ({ foods,calories }) => {
         </p>
       </div>
       <div>
-        <p>Average Vitamin A: 800 micrograms </p>
+        <p>Average Vitamin A: {vitaminA} micrograms</p>
       </div>
       <div>
         <p>Total Protein Consumed: {Math.round(proteinCount / 1000)} g</p>
       </div>
       <div>
         <p>Average Protein: 51 g </p>
+      </div>
+      <div>
+        <p>Total Carbohydrates Consumed: {Math.round(carbCount / 1000)} g</p>
+      </div>
+      <div>
+        <p>Average Carbohydrates: {Math.round(carbs)} g </p>
       </div>
     </div>
   );
