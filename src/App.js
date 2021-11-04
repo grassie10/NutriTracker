@@ -29,7 +29,7 @@ function App() {
         }}
       >
         <img width="70px" height="70px" src={icon} alt="logo_image" />
-        <h1>NutriTracker</h1>
+        <h1 data-cy="title">NutriTracker</h1>
       </div>
       <div
         style={{
