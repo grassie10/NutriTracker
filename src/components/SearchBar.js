@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   <button
     className="btn btn-outline-secondary"
+    data-cy="dropdown"
     onClick={(e) => {
       e.preventDefault();
       onClick(e);
@@ -59,6 +60,7 @@ const SearchBar = ({ data, foods, setFoods }) => {
             <Dropdown.Item
               key={index}
               onClick={() => setFoods([...foods, item])}
+              data-cy="menu"
             >
               {item.name}
             </Dropdown.Item>

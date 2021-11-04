@@ -38,7 +38,7 @@ function App() {
           justifyContent: "space-between",
         }}
       >
-        <SearchBar data={data} foods={foods} setFoods={setFoods} />
+        <SearchBar data={data} foods={foods} setFoods={setFoods}/>
         <FoodList foods={foods} />
         <InputDetails
           setCalories={setCalories}
