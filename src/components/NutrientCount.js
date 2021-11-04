@@ -34,7 +34,7 @@ const NutrientCount = ({ foods, calories, vitaminA, carbs }) => {
         <p>Average Calories: {calories} cal</p>
       </div>
       <div>
-        <p>
+        <p data-testid='vita-count'>
           Total Vitamin A Consumed: {Math.round(vitACount * 10000)} micrograms
         </p>
       </div>
