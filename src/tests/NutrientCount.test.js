@@ -4,6 +4,12 @@ import App from '../App';
 import SearchBar from '../components/SearchBar';
 import NutrientCount from '../components/NutrientCount';
 
+const handleSetFoods = () =>
+  setFoods((prevItem) => ({
+    ...prevItem,
+    [index]: item.serving,
+  }));
+
 describe('vitamin a tests', () => {
   const data = [
     {
@@ -53,7 +59,7 @@ describe('vitamin a tests', () => {
     },
   ];
 
-  var foods = [];
+  var foods = {};
   const setFoods = (newList) => (foods = newList);
 
   test('button click to open search bar', async () => {
@@ -76,23 +82,21 @@ describe('vitamin a tests', () => {
     const button2 = getByTestId('select-item');
     userEvent.click(button2);
 
-    expect(foods[0]).toBe(data[0]);
+    expect(foods).toStrictEqual({0: 100});
   });
 
   test('vitamin a count increases after adding beef liver', async () => {
     const { getByTestId } = render(
       <div>
         <SearchBar data={data} foods={foods} setFoods={setFoods} />
-        <NutrientCount foods={foods} />
+        <NutrientCount data={data} foods={foods} />
       </div>
     );
 
     const vitACount = getByTestId('vita-count');
 
     expect(vitACount.textContent).toContain(
-      Math.round(
-        (data[0]['nutrients']['Vitamin A'] / data[0]['serving']) * 10000
-      ).toString()
+      Math.round(data[0]['nutrients']['Vitamin A'] * 10000).toString()
     );
   });
 });

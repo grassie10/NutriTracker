@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "../App.css";
+import React, { useState } from 'react';
+import '../App.css';
 
 const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
   const [height, setHeight] = useState(0);
@@ -32,30 +32,35 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
   };
 
   return (
-
-    <div style={{ 
-      padding: 30, 
-      paddingTop: 10,
-      borderStyle: "solid",
-      height: "300px",
-      }}>
-      <h4 style={{ 
-      padding: 5,
-      }}> Update average values
-        </h4>
+    <div
+      style={{
+        padding: 30,
+        paddingTop: 10,
+        borderStyle: 'solid',
+        height: '300px',
+      }}
+    >
+      <h4
+        style={{
+          padding: 5,
+        }}
+      >
+        {' '}
+        Update average values
+      </h4>
       <form
         style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
         }}
       >
         <label style={{ marginBottom: 10 }}>
           Height in inches
           <input
-            type="number"
-            name="height"
+            type='number'
+            name='height'
             style={{ marginLeft: 10 }}
             onChange={(e) => setHeight(e.target.value)}
           />
@@ -63,8 +68,8 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
         <label style={{ marginBottom: 10 }}>
           Weight in pounds
           <input
-            type="number"
-            name="weight"
+            type='number'
+            name='weight'
             style={{ marginLeft: 10 }}
             onChange={(e) => setWeight(e.target.value)}
           />
@@ -72,8 +77,9 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
         <label style={{ marginBottom: 10 }}>
           Age
           <input
-            type="number"
-            name="age"
+            type='number'
+            name='age'
+            data-testid='age-input'
             style={{ marginLeft: 10 }}
             onChange={(e) => setAge(e.target.value)}
           />
@@ -84,8 +90,8 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
             style={{ marginLeft: 10 }}
             onChange={(e) => setSex(parseInt(e.target.value))}
           >
-            <option value="0">Male</option>
-            <option value="1">Female</option>
+            <option value='0'>Male</option>
+            <option value='1'>Female</option>
           </select>
         </label>
         <label style={{ marginBottom: 10 }}>
@@ -94,22 +100,27 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
             style={{ marginLeft: 10 }}
             onChange={(e) => setActivity(parseInt(e.target.value))}
           >
-            <option value="0" title = "Little or no exercise" >Sedentary</option>
-            <option value="1" title = "Light exercise/sports 1-3 days/week">
-              Lightly active 
+            <option value='0' title='Little or no exercise'>
+              Sedentary
             </option>
-            <option value="2" title = "Moderate exercise/sports 3-5 days/week">
+            <option value='1' title='Light exercise/sports 1-3 days/week'>
+              Lightly active
+            </option>
+            <option value='2' title='Moderate exercise/sports 3-5 days/week'>
               Moderately active
             </option>
-            <option value="3" title = "Hard exercise/sports 6-7 days a week">
-              Very active 
+            <option value='3' title='Hard exercise/sports 6-7 days a week'>
+              Very active
             </option>
-            <option value="4" title = "Very hard exercise/sports, physical job or 2x training">
+            <option
+              value='4'
+              title='Very hard exercise/sports, physical job or 2x training'
+            >
               Extra active
             </option>
           </select>
         </label>
-        <input type="button" value="Submit" onClick={calculateNutrients} />
+        <input type='button' value='Submit' onClick={calculateNutrients} />
       </form>
     </div>
   );
