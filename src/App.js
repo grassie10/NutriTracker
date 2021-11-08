@@ -38,8 +38,16 @@ function App() {
           justifyContent: "space-between",
         }}
       >
+
+         <div style = {{
+            display: "flex",
+            flexDirection: "column",
+            
+         }}>
         <SearchBar data={data} foods={foods} setFoods={setFoods}/>
         <FoodList foods={foods} />
+        </div>
+
         <InputDetails
           setCalories={setCalories}
           setVitaminA={setVitaminA}

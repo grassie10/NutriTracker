@@ -11,11 +11,6 @@ const NutrientCount = ({ foods, calories, vitaminA, carbs }) => {
       totalVitA + currentFood.nutrients["Vitamin A"] / currentFood.serving,
     0
   );
-  const proteinCount = foods.reduce(
-    (totalProtein, currentFood) =>
-      totalProtein + currentFood.proteins / currentFood.serving,
-    0
-  );
 
   const carbCount = foods.reduce(
     (totalCarbs, currentFood) =>
@@ -40,12 +35,6 @@ const NutrientCount = ({ foods, calories, vitaminA, carbs }) => {
       </div>
       <div>
         <p>Average Vitamin A: {vitaminA} micrograms</p>
-      </div>
-      <div>
-        <p>Total Protein Consumed: {Math.round(proteinCount / 1000)} g</p>
-      </div>
-      <div>
-        <p>Average Protein: 51 g </p>
       </div>
       <div>
         <p>Total Carbohydrates Consumed: {Math.round(carbCount / 1000)} g</p>

@@ -33,7 +33,17 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
   };
 
   return (
-    <div style={{ padding: 30 }}>
+
+    <div style={{ 
+      padding: 30, 
+      paddingTop: 10,
+      borderStyle: "solid",
+      height: "300px",
+      }}>
+      <h4 style={{ 
+      padding: 5,
+      }}> Update average value
+        </h4>
       <form
         style={{
           display: "flex",
@@ -85,19 +95,18 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
             style={{ marginLeft: 10 }}
             onChange={(e) => setActivity(parseInt(e.target.value))}
           >
-            <option value="0">Sedentary (little or no exercise)</option>
-            <option value="1">
-              Lightly active (light exercise/sports 1-3 days/week)
+            <option value="0" title = "Little or no exercise" >Sedentary</option>
+            <option value="1" title = "Light exercise/sports 1-3 days/week">
+              Lightly active 
             </option>
-            <option value="2">
-              Moderately active (moderate exercise/sports 3-5 days/week)
+            <option value="2" title = "Moderate exercise/sports 3-5 days/week">
+              Moderately active
             </option>
-            <option value="3">
-              Very active (hard exercise/sports 6-7 days a week)
+            <option value="3" title = "Hard exercise/sports 6-7 days a week">
+              Very active 
             </option>
-            <option value="4">
-              Extra active (very hard exercise/sports, physical job or 2x
-              training)
+            <option value="4" title = "Very hard exercise/sports, physical job or 2x training">
+              Extra active
             </option>
           </select>
         </label>

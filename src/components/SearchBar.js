@@ -52,8 +52,9 @@ const CustomMenu = React.forwardRef(
 
 const SearchBar = ({ data, foods, setFoods }) => {
   return (
+    <div>
     <Dropdown style={{ position: 'inherit' }}>
-      <div style={{ left: '0px', position: 'absolute', padding: '30px' }}>
+      <div style={{ left: '0px', padding: '30px' }}>
         <Dropdown.Toggle as={CustomToggle} id='dropdown-custom-components'>
           Select Food Items
         </Dropdown.Toggle>
@@ -81,6 +82,7 @@ const SearchBar = ({ data, foods, setFoods }) => {
         </button>
       </div>
     </Dropdown>
+    </div>
   );
 };
 
