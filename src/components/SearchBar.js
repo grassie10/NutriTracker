@@ -3,7 +3,6 @@ import { Dropdown, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => {
-  console.log(children);
   return (
     <button
       className='btn btn-outline-secondary'
@@ -25,8 +24,6 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => {
 const CustomMenu = React.forwardRef(
   ({ children, className, 'aria-labelledby': labeledBy }, ref) => {
     const [value, setValue] = useState('');
-
-    console.log(React.Children.toArray(children));
 
     return (
       <div
