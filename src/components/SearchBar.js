@@ -52,37 +52,41 @@ const CustomMenu = React.forwardRef(
 
 const SearchBar = ({ data, foods, setFoods }) => {
   return (
-    <div>
-    <Dropdown style={{ position: 'inherit' }}>
-      <div style={{ left: '0px', padding: '30px' }}>
-        <Dropdown.Toggle as={CustomToggle} id='dropdown-custom-components'>
-          Select Food Items
-        </Dropdown.Toggle>
-        <Dropdown.Menu as={CustomMenu}>
-          {data.map((item, index) => (
-            <Dropdown.Item
-              key={index}
-              onClick={() => setFoods([...foods, item])}
-              data-cy='menu'
-              data-testid='select-item'
-            >
-              {item.name}
-            </Dropdown.Item>
-          ))}
-        </Dropdown.Menu>
-        <button
-          style={{ marginLeft: '10px' }}
-          type='button'
-          className='btn btn-outline-secondary'
-          onClick={() => {
-            setFoods([]);
-          }}
-        >
-          clear
-        </button>
-      </div>
-    </Dropdown>
-    </div>
+      <Dropdown style={{ position: 'inherit' }}>
+        <div style={{ left: '0px', padding: '30px' }}>
+          <Dropdown.Toggle as={CustomToggle} id='dropdown-custom-components'>
+            Select Food Items
+          </Dropdown.Toggle>
+          <Dropdown.Menu as={CustomMenu}>
+            {data.map((item, index) => (
+              !Object.keys(foods).includes(index.toString()) ?
+              <Dropdown.Item
+                key={index}
+                onClick={() =>
+                  setFoods(prevItem => ({
+                    ...prevItem, 
+                    [index]: item.serving }))
+                }
+                data-cy='menu'
+                data-testid='select-item'
+              >
+                {item.name}
+              </Dropdown.Item>
+            :
+            ''))}
+          </Dropdown.Menu>
+          <button
+            style={{ marginLeft: '10px' }}
+            type='button'
+            className='btn btn-outline-secondary'
+            onClick={() => {
+              setFoods({});
+            }}
+          >
+            clear
+          </button>
+        </div>
+      </Dropdown>
   );
 };
 

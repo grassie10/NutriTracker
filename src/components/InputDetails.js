@@ -1,4 +1,3 @@
-import { set } from "@firebase/database";
 import React, { useState } from "react";
 import "../App.css";
 
@@ -42,7 +41,7 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
       }}>
       <h4 style={{ 
       padding: 5,
-      }}> Update average value
+      }}> Update average values
         </h4>
       <form
         style={{
