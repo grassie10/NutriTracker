@@ -2,26 +2,31 @@ import React, { useState } from 'react';
 import { Dropdown, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-  <button
-    className='btn btn-outline-secondary'
-    data-cy='dropdown'
-    data-testid='select'
-    onClick={(e) => {
-      e.preventDefault();
-      onClick(e);
-    }}
-  >
-    {children}
-    &#x25bc;
-  </button>
-));
+const CustomToggle = React.forwardRef(({ children, onClick }, ref) => {
+  console.log(children);
+  return (
+    <button
+      className='btn btn-outline-secondary'
+      data-cy='dropdown'
+      data-testid='select'
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(e);
+      }}
+    >
+      {children}
+      &#x25bc;
+    </button>
+  );
+});
 
 // forwardRef again here!
 // Dropdown needs access to the DOM of the Menu to measure it
 const CustomMenu = React.forwardRef(
   ({ children, className, 'aria-labelledby': labeledBy }, ref) => {
     const [value, setValue] = useState('');
+
+    console.log(React.Children.toArray(children));
 
     return (
       <div
@@ -73,7 +78,15 @@ const SearchBar = ({ data, foods, setFoods }) => {
                 {item.name}
               </Dropdown.Item>
             ) : (
-              ''
+              <Dropdown.Item
+                key={index}
+                onClick={() => setFoods(handleSetFoods(index, item))}
+                data-cy='menu'
+                data-testid='select-item'
+                disabled
+              >
+                {item.name}
+              </Dropdown.Item>
             )
           )}
         </Dropdown.Menu>
