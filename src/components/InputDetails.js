@@ -61,6 +61,7 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
           <input
             type='number'
             name='height'
+            data-testid='height-input'
             style={{ marginLeft: 10 }}
             onChange={(e) => setHeight(e.target.value)}
           />
