@@ -8,14 +8,17 @@ const NutrientCount = ({ data, foods, calories, vitaminA, carbs }) => {
         foods[currentFoodIndex],
     0
   );
-  const vitACount = Object.keys(foods).reduce(
-    (totalVitA, currentFoodIndex) =>
-      totalVitA +
-      (data[currentFoodIndex].nutrients['Vitamin A'] /
-        data[currentFoodIndex].serving) *
-        foods[currentFoodIndex],
-    0
-  );
+  var vitACount = 0;
+  const foodKeys = Object.keys(foods);
+  for (let i = 0; i < foodKeys.length; i++) {
+    if (data[foodKeys[i]].nutrients['Vitamin A']) {
+      console.log('i am not supposed to be here');
+      console.log(vitACount);
+      vitACount +=
+        (data[foodKeys[i]].nutrients['Vitamin A'] / data[foodKeys[i]].serving) *
+        foods[foodKeys[i]];
+    }
+  }
 
   const carbCount = Object.keys(foods).reduce(
     (totalCarbs, currentFoodIndex) =>
