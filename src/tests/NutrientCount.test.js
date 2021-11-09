@@ -99,4 +99,101 @@ describe('vitamin a tests', () => {
       Math.round(data[0]['nutrients']['Vitamin A'] * 10000).toString()
     );
   });
+
+  //
+
+});
+
+
+describe('proteins tests', () => {
+  const data = [
+    {
+      "name": "Chicken liver",
+      "usda_id": "05027",
+      "fat": 65000,
+      "calories": 1.67,
+      "proteins": 245000,
+      "carbohydrates": 9000,
+      "serving": 100,
+      "nutrients": {
+        "Calcium": 110,
+        "Iron": 116,
+        "Potassium": 2630,
+        "Magnesium": 250,
+        "Phosphorus": 4050,
+        "Sodium": 760,
+        "Zinc": 40,
+        "Copper": 5,
+        "Manganese": 4,
+        "Selenium": 0.82,
+        "Vitamin C": 279,
+        "Vitamin B12": 0.17,
+        "Vitamin B1": 3,
+        "Vitamin B2": 20,
+        "Vitamin B3": 110,
+        "Vitamin B5": 67,
+        "Vitamin B6": 8,
+        "Vitamin B7": 1.3,
+        "Vitamin B9": 5.78,
+        "Choline": 2900,
+        "Vitamin A": 39.81,
+        "Vitamin E": 8,
+        "Linoleic acid": 7190,
+        "α-Linolenic acid": 120,
+        "Tryptophan": 2480,
+        "Threonine": 10210,
+        "Isoleucine": 11440,
+        "Leucine": 21280,
+        "Lysine": 18750,
+        "Methionine": 6080,
+        "Phenylalanine": 11600,
+        "Valine": 14050,
+        "Histidine": 7140,
+      },
+    },
+  ];
+
+  var foods = {};
+  const setFoods = (newList) => (foods = newList);
+
+  test('button click to open search bar', async () => {
+    const { getByTestId } = render(
+      <SearchBar data={data} foods={foods} setFoods={setFoods} />
+    );
+    const button = getByTestId('select');
+    userEvent.click(button);
+
+    expect(getByTestId('search-bar'));
+  });
+
+  test('Chicken liver gets added', async () => {
+    const { getByTestId } = render(
+      <SearchBar data={data} foods={foods} setFoods={setFoods} />
+    );
+    const button = getByTestId('select');
+    userEvent.click(button);
+
+    const button2 = getByTestId('select-item');
+    userEvent.click(button2);
+
+    expect(foods).toStrictEqual({0: 100});
+  });
+
+  test('proteins count increases after adding beef liver', async () => {
+    const { getByTestId } = render(
+      <div>
+        <SearchBar data={data} foods={foods} setFoods={setFoods} />
+        <NutrientCount data={data} foods={foods} />
+      </div>
+    );
+
+    const vitACount = getByTestId('carb-count');
+
+    expect(vitACount.textContent).toContain(
+      "Total Carbohydrates Consumed: 9 g"
+    );
+  });
+
+  //
+  
 });
