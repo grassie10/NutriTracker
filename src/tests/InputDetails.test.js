@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import InputDetails from '../components/InputDetails';
 
+
 describe('age arrow changes input', () => {
   var foods = [];
   const setFoods = (newList) => (foods = newList);
@@ -17,3 +18,5 @@ describe('age arrow changes input', () => {
     expect(ageInput.value).toContain('20');
   });
 });
+
+

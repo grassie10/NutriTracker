@@ -197,3 +197,26 @@ describe('proteins tests', () => {
   //
   
 });
+
+describe('update average vitamin A count', () => {
+  var foods = [];
+  const setFoods = (newList) => (foods = newList);
+  test('vitamin A count changes', async () => {
+    const { getByTestId } = render(
+      <div>
+      <NutrientCount           
+          data={[]}
+          foods={foods}
+          calories={30}
+          vitaminA={30}
+          carbs={30}/>
+      </div>
+    );
+
+    const AverageVitACount = getByTestId('average-vita-count');
+
+    expect(AverageVitACount.textContent).toContain(
+      "Average Vitamin A: 30 μg"
+    );
+  });
+});
