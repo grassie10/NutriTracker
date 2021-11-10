@@ -11,11 +11,12 @@ import InputDetails from "./components/InputDetails";
 function App() {
   const [data, loading, error] = useData("/");
   const [foods, setFoods] = useState([]);
+  const [calories, setCalories] = useState(0);
+  const [vitaminA, setVitaminA] = useState(0);
+  const [carbs, setCarbs] = useState(0);
 
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>Error :(</h1>;
-
-  console.log(foods);
 
   return (
     <div className="App">
@@ -28,7 +29,7 @@ function App() {
         }}
       >
         <img width="70px" height="70px" src={icon} alt="logo_image" />
-        <h1>NutriTracker</h1>
+        <h1 data-cy="title">NutriTracker</h1>
       </div>
       <div
         style={{
@@ -37,10 +38,19 @@ function App() {
           justifyContent: "space-between",
         }}
       >
-        <SearchBar data={data} foods={foods} setFoods={setFoods} />
+        <SearchBar data={data} foods={foods} setFoods={setFoods}/>
         <FoodList foods={foods} />
-        <InputDetails />
-        <NutrientCount foods={foods} />
+        <InputDetails
+          setCalories={setCalories}
+          setVitaminA={setVitaminA}
+          setCarbs={setCarbs}
+        />
+        <NutrientCount
+          foods={foods}
+          calories={calories}
+          vitaminA={vitaminA}
+          carbs={carbs}
+        />
       </div>
     </div>
   );

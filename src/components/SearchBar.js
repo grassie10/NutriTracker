@@ -4,7 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   <button
-    className="btn btn-outline-secondary" data-testid= "select"
+    className="btn btn-outline-secondary"
+    data-cy="dropdown"
     onClick={(e) => {
       e.preventDefault();
       onClick(e);
@@ -25,12 +26,10 @@ const CustomMenu = React.forwardRef(
       <div
         style={{ marginTop: "15px", width: "300px" }}
         ref={ref}
-        // style={style}
         className={className}
         aria-labelledby={labeledBy}
       >
         <FormControl
-          data-testid= "search-bar"
           autoFocus
           className="mx-3 my-2 w-auto"
           placeholder="Type to filter..."
@@ -53,14 +52,15 @@ const SearchBar = ({ data, foods, setFoods }) => {
   return (
     <Dropdown style={{ position: "inherit" }}>
       <div style={{ left: "0px", position: "absolute", padding: "30px" }}>
-        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components" >
+        <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
           Select Food Items
         </Dropdown.Toggle>
-        <Dropdown.Menu as={CustomMenu} >
+        <Dropdown.Menu as={CustomMenu}>
           {data.map((item, index) => (
-            <Dropdown.Item data-testid= "select-item"
+            <Dropdown.Item
               key={index}
               onClick={() => setFoods([...foods, item])}
+              data-cy="menu"
             >
               {item.name}
             </Dropdown.Item>
