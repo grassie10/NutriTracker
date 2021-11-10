@@ -1,12 +1,9 @@
 //import axios from 'axios';
 import { render, screen, act, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import App from "./App";
-import SearchBar from './components/SearchBar';
-import FoodList from './components/FoodList';
+import App from "../App";
+import SearchBar  from '../components/SearchBar';
 import { unmountComponentAtNode } from "react-dom";
 //import { act } from "react-dom/test-utils";
-import NutrientCount from "./components/NutrientCount";
 
 let container = null;
 beforeEach(() => {

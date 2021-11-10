@@ -10,7 +10,8 @@ import InputDetails from "./components/InputDetails";
 
 function App() {
   const [data, loading, error] = useData("/");
-  const [foods, setFoods] = useState([]);
+  // const [foods, setFoods] = useState([]);
+  const [foods, setFoods] = useState({});
   const [calories, setCalories] = useState(0);
   const [vitaminA, setVitaminA] = useState(0);
   const [carbs, setCarbs] = useState(0);
@@ -38,14 +39,22 @@ function App() {
           justifyContent: "space-between",
         }}
       >
+
+         <div style = {{
+            display: "flex",
+            flexDirection: "column",
+         }}>
         <SearchBar data={data} foods={foods} setFoods={setFoods}/>
-        <FoodList foods={foods} />
+        <FoodList data={data} foods={foods} setFoods={setFoods}/>
+        </div>
+
         <InputDetails
           setCalories={setCalories}
           setVitaminA={setVitaminA}
           setCarbs={setCarbs}
         />
         <NutrientCount
+          data={data}
           foods={foods}
           calories={calories}
           vitaminA={vitaminA}

@@ -1,11 +1,28 @@
-import React from "react";
+import React from 'react';
 
-const FoodList = ({ foods }) => {
+const FoodList = ({ data, foods, setFoods }) => {
   return (
     <div style={{ padding: "30px" }} data-testid='food-list'>
       <ul>
-        {foods.map((food, index) => (
-          <li key={index}>{food.name}</li>
+        {Object.keys(foods).map((foodIndex, index) => (
+          <div>
+            <p key={index} style={{ marginBottom: 5 }}>
+              {data[foodIndex].name}
+            </p>
+            <input
+              type='number'
+              name='serving'
+              defaultValue={data[foodIndex].serving}
+              style={{ marginBottom: 15 }}
+              onChange={(e) =>
+                setFoods((prevItem) => ({
+                  ...prevItem,
+                  [foodIndex]: parseInt(e.target.value),
+                }))
+              }
+            />
+            <span style={{ marginLeft: -40 }}>g</span>
+          </div>
         ))}
       </ul>
     </div>
