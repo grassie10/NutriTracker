@@ -2,7 +2,7 @@ import React from 'react';
 
 const FoodList = ({ data, foods, setFoods }) => {
   return (
-    <div style={{ padding: '0px' }}>
+    <div style={{ padding: "30px" }} data-testid='food-list'>
       <ul>
         {Object.keys(foods).map((foodIndex, index) => (
           <div>
