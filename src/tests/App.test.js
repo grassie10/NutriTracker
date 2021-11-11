@@ -121,7 +121,7 @@ it('button click', async () => {
 //   expect(await container.querySelector("[data-testid='calorieCount']").textContent).toContain("Total Calories Consumed:");
  });
 
-describe('Select Food Item', () => {
+describe('Select Food Item 1', () => {
   test ('successfully displays selected food item', async () => {
     render(<App />);
     const searchDropdown = await screen.findByTestId('select');
@@ -131,7 +131,9 @@ describe('Select Food Item', () => {
     const foodList = await screen.findByTestId('food-list');
     expect(foodList.textContent).toContain(dropdownList[0].textContent);
   })
+})
 
+describe('Select Food Item 2', () => {
   test ('does not display any food item without selection', async () => {
     render(<App />);
     const searchDropdown = await screen.findByTestId('select');
@@ -140,7 +142,9 @@ describe('Select Food Item', () => {
     const foodList = await screen.findByTestId('food-list');
     expect(foodList.textContent).toBeFalsy();
   })
+});
 
+describe('Select Food Item 3', () => {
   test ('does not display unselected food item', async () => {
     render(<App />);
     const searchDropdown = await screen.findByTestId('select');
@@ -150,4 +154,4 @@ describe('Select Food Item', () => {
     const foodList = await screen.findByTestId('food-list');
     expect(foodList.textContent).not.toContain(dropdownList[1].textContent);
   })
-})
+});
