@@ -33,15 +33,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: expo/expo-github-action@v6
-        with:
-          expo-version: 4.x
+      # https://www.cypress.io/blog/2019/11/20/drastically-simplify-your-testing-with-cypress-github-action/
       - uses: cypress-io/github-action@v2
         with:
           build: npm run build
           start: npm start
           wait-on: http://localhost:3000
-          
+
   deploy:
     name: Firebase deploy
     needs: [build, cypress]
