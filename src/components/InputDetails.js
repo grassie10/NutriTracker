@@ -71,6 +71,7 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
           <input
             type='number'
             name='weight'
+            data-testid='weight-input'
             style={{ marginLeft: 10 }}
             onChange={(e) => setWeight(e.target.value)}
           />
