@@ -26,4 +26,13 @@ describe('age arrow changes input', () => {
     expect(heightInput.value).toContain('66');
   });
 
+  test('Checking weight input', async () => {
+    const { getByTestId } = render(
+      <InputDetails />
+    );
+    const weightInput = getByTestId('weight-input');
+    fireEvent.change(weightInput, {target: {value: 75}});
+    expect(weightInput.value).toContain('75');
+  });
+
 });
