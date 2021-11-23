@@ -63,13 +63,13 @@ const SearchBar = ({ data, foods, setFoods }) => {
         <Dropdown.Toggle as={CustomToggle} id='dropdown-custom-components'>
           Select Food Items
         </Dropdown.Toggle>
-        <Dropdown.Menu as={CustomMenu}>
+        <Dropdown.Menu as={CustomMenu} data-cy='menu'>
           {data.map((item, index) =>
             !Object.keys(foods).includes(index.toString()) ? (
               <Dropdown.Item
                 key={index}
                 onClick={() => setFoods(handleSetFoods(index, item))}
-                data-cy='menu'
+                data-cy={'menu-'+item.name.replaceAll(' ','-')}
                 data-testid='select-item'
               >
                 {item.name}
@@ -78,7 +78,7 @@ const SearchBar = ({ data, foods, setFoods }) => {
               <Dropdown.Item
                 key={index}
                 onClick={() => setFoods(handleSetFoods(index, item))}
-                data-cy='menu'
+                data-cy={'menu-'+item.name.replaceAll(' ','-')}
                 data-testid='select-item'
                 disabled
               >
