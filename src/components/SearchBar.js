@@ -69,7 +69,7 @@ const SearchBar = ({ data, foods, setFoods }) => {
               <Dropdown.Item
                 key={index}
                 onClick={() => setFoods(handleSetFoods(index, item))}
-                data-cy={'menu-'+item.name.replaceAll(' ','-')}
+                data-cy={'menu-'+item.name.replace(/\s+/g,'-')}
                 data-testid='select-item'
               >
                 {item.name}
@@ -78,7 +78,7 @@ const SearchBar = ({ data, foods, setFoods }) => {
               <Dropdown.Item
                 key={index}
                 onClick={() => setFoods(handleSetFoods(index, item))}
-                data-cy={'menu-'+item.name.replaceAll(' ','-')}
+                data-cy={'menu-'+item.name.replace(/\s+/g,'-')}
                 data-testid='select-item'
                 disabled
               >
