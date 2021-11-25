@@ -86,12 +86,14 @@ const SearchBar = ({ data, foods, setFoods }) => {
               </Dropdown.Item>
             )
           )}
+
         </Dropdown.Menu>
         <button
           style={{ marginLeft: '10px' }}
           type='button'
           className='btn btn-outline-secondary'
           data-testid='clear-button'
+          data-cy='clearButton'
           onClick={() => {
             setFoods({});
           }}
