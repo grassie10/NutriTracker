@@ -62,6 +62,7 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
             type='number'
             name='height'
             data-testid='height-input'
+            data-cy='height-input'
             style={{ marginLeft: 10 }}
             onChange={(e) => setHeight(e.target.value)}
           />
@@ -72,6 +73,7 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
             type='number'
             name='weight'
             data-testid='weight-input'
+            data-cy='weight-input'
             style={{ marginLeft: 10 }}
             onChange={(e) => setWeight(e.target.value)}
           />
@@ -82,6 +84,7 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
             type='number'
             name='age'
             data-testid='age-input'
+            data-cy='age-input'
             style={{ marginLeft: 10 }}
             onChange={(e) => setAge(e.target.value)}
           />
@@ -91,6 +94,7 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
           <select
             style={{ marginLeft: 10 }}
             onChange={(e) => setSex(parseInt(e.target.value))}
+            data-cy='sex-select'
           >
             <option value='0'>Male</option>
             <option value='1'>Female</option>
@@ -101,6 +105,7 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
           <select
             style={{ marginLeft: 10 }}
             onChange={(e) => setActivity(parseInt(e.target.value))}
+            data-cy='activity-select'
           >
             <option value='0' title='Little or no exercise'>
               Sedentary
@@ -122,7 +127,12 @@ const InputDetails = ({ setCalories, setVitaminA, setCarbs }) => {
             </option>
           </select>
         </label>
-        <input type='button' value='Submit' onClick={calculateNutrients} />
+        <input
+          type='button'
+          value='Submit'
+          onClick={calculateNutrients}
+          data-cy='input-submit'
+        />
       </form>
     </div>
   );

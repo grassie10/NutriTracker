@@ -32,11 +32,11 @@ const NutrientCount = ({ data, foods, calories, vitaminA, carbs }) => {
     <div
       style={{ textAlign: 'left', padding: '30px', justifyContent: 'flex-end' }}
     >
-      <div data-testid="calorieCount">
+      <div data-testid='calorieCount'>
         <p>Total Calories Consumed: {Math.round(calorieCount * 1000)} cal</p>
       </div>
       <div>
-        <p>Average Calories: {calories} cal</p>
+        <p data-cy='average-calories'>Average Calories: {calories} cal</p>
       </div>
       <div>
         <p data-testid='vita-count'>
