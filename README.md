@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# CS 397 Rapid Prototyping: NutriTracker
+
+Live site can be viewed here: [https://nutritracker-bff41.web.app/](https://nutritracker-bff41.web.app/)
+
+A web app where users can input personal information and select various food items consumed to view consumption amounts of various nutrients like carbohydrates and vitamins.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
